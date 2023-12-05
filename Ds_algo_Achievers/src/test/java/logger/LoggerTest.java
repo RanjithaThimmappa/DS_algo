@@ -7,7 +7,7 @@ public class LoggerTest {
 		int c,a=10, b=20;
 		c=a+b;
 		System.out.println("Value of c :"+c);
-		LoggerLoad.info("Info  - Addition of integers");
+		LoggerLoad.info("Info  - adding ");
 	}
 	
 	public void testError()

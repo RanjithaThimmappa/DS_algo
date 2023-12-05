@@ -11,7 +11,7 @@ import io.cucumber.junit.Cucumber;
 	@CucumberOptions(
 			plugin = {"pretty", "html:target/jyo.html"}, //reporting purpose
 			monochrome=false,  //console output color
-			tags = "@Jyo", //tags from feature file
+			tags = "Jyo", //tags from feature file
 			features = {"src/test/resources/features"}, //location of feature files
 			glue= "stepDefinitions") //location of step definition files
 
