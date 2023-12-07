@@ -12,12 +12,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class DriverFactory {
 	
 	public static WebDriver driver;
-	//public static String Url="https://dsportalapp.herokuapp.com/";
 	public static String browser;
 	
 	public static WebDriver initializeDriver(String browser) {
 		
-		if(browser == "Chrome"){
+		if (browser == "Chrome"){
 			
 			ChromeOptions co = new ChromeOptions();
 			co.setPageLoadStrategy(PageLoadStrategy.NORMAL);
@@ -38,7 +37,6 @@ public class DriverFactory {
 		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		//driver.get(browser);
 		return driver;
 			
 		}
@@ -46,7 +44,6 @@ public class DriverFactory {
 	public static void closeDriver() {
 		
 		driver.close();
-//		driver.quit();
 		
 	}
 
