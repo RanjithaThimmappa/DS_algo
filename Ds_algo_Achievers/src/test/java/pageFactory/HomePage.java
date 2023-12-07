@@ -9,8 +9,10 @@ public   class HomePage {
 	
 	WebDriver driver;
 	
+	
 	@FindBy(xpath="//h1[text()='Preparing for the Interviews']")
 	 WebElement homePageText;
+
 	
 	
 
@@ -24,11 +26,7 @@ public   class HomePage {
 
     }
 	
-	public void fetchInterviewText (){
-		
-		System.out.println(homePageText.getText());
-	
 	
 
-}
+
 }

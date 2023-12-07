@@ -17,31 +17,41 @@
 ## (Comments)
 #Sample Feature Definition Template
 @DataStructure
-Feature: DataStructure 
-  
+Feature: Testing the Data Structure feature of the DS Portal 
+         User will be able to run different tests
 
   @DS1
   Scenario: Checking the Get StartButton functionality
-    Given The user is in the Home page after logged in
-    When The user clicks  "Get Started" button below the "Data structures-Introduction" 
-    Then The user should land in "Data Structures- Introduction Page" 
+    Given   The user is in the Home page after logged in
+    When    The user clicks  Get Started button below the Data structures-Introduction 
+    Then    The user should land in Data Structures- Introduction Page
   
 
   @DS2
   Scenario: Checking the Time Complexity button functionality
-    Given The user is in the Data structures-Introduction page
-    When The user clicks "Time Complexity" button
-    Then The user should be redirected to "time complexity" of Data structures-Introduction
+    Given   The user is in the Data structures-Introduction page
+    When    The user clicks Time Complexity button
+    Then    The user should be redirected to time complexity of Data structures-Introduction
 
   @DS3
   Scenario: Checking the Practice Question button functionality
-    Given The user is in the Time Complexity page of Data structures-Introduction page
-    When  The user clicks the "Practice Questions" button
-    Then The user should be redirected to "Practice Questions" of Data structures-Introduction
+    Given   The user is in the Time Complexity page of Data structures-Introduction page
+    When    The user clicks the Practice Questions button
+    Then    The user should be redirected to Practice Questions of Data structures-Introduction
 
 
   @DS4
   Scenario: Checking the Practice Question button functionality
-    Given The user is in the practice Question page of Data structures-Introduction page
-    When  The user clicks "Try Here" button
-    Then The user should be redirected to a page having an tryEditor with a Run button to test
+    Given   The user is in the practice Question page of Data structures-Introduction page
+    When    The user clicks Try Here button
+    Then    The user should be redirected to a page having an tryEditor with a Run button to test
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

@@ -5,30 +5,29 @@ import org.openqa.selenium.WebDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pageFactory.DataStructure;
 import pageFactory.HomePage;
 import utilities.DriverFactory;
 
 public class HomePage_SD {
-
-	
+   
+	WebDriver driver;
+	HomePage hp = new HomePage(driver);
 	@Given("User enters the  URL")
 	public void user_enters_the_url() {
-		WebDriver driver=DriverFactory.initializeDriver("Chrome");
-		driver.get("https://dsportalapp.herokuapp.com/");
+		driver = DriverFactory.initializeDriver("chrome");
+		driver.get("https://dsportalapp.herokuapp.com");
 	    
 	}
 
 	@Then("User should be able to navigate to  the home page and   see the text-Preparing for the Interviews You are at the right place")
 	public void user_should_be_able_to_navigate_to_the_home_page_and_see_the_text_preparing_for_the_interviews_you_are_at_the_right_place() {
-		WebDriver driver = DriverFactory.initializeDriver("Chrome");
-		driver.get("https://dsportalapp.herokuapp.com/");
-        HomePage hp=new HomePage(driver);
-		hp.fetchInterviewText();
+		
 	}
 
 	@Then("User should see the Get  Started button")
 	public void user_should_see_the_get_started_button() {
-	    
+
 	}
 
 	@Given("User opens the homepage")
@@ -38,7 +37,7 @@ public class HomePage_SD {
 
 	@When("User Clicks on Get Started")
 	public void user_clicks_on_get_started() {
-	    
+		
 	}
 
 	@Then("Home Page is displayed with the all the seven datastructure modules")
@@ -112,10 +111,5 @@ public class HomePage_SD {
 	public void user_is_redirected_on_the_register_page_and_should_be_able_to_see_the_register_button() {
 	    
 	    
-	}   
-		
-		
-
-	}
-
+}}
 
