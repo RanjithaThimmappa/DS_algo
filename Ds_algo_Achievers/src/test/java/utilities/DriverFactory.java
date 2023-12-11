@@ -9,10 +9,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+
+
 public class DriverFactory {
 	
 	public static WebDriver driver;
-	public static String browser;
 	
 	public static WebDriver initializeDriver(String browser) {
 		
@@ -41,10 +42,10 @@ public class DriverFactory {
 			
 		}
 	
-	public static void closeDriver() {
-		
-		driver.close();
-		
-	}
+//	public static void closeDriver() {
+//		
+//		driver.quit();
+//		
+//	}
 
 }

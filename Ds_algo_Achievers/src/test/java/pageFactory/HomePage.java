@@ -2,6 +2,7 @@ package pageFactory;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
 	
-	WebDriver driver;	
+//	WebDriver driver;	
 	@FindBy(xpath = "//h1[text()='Preparing for the Interviews']") public  WebElement homePageText;
 	@FindBy(xpath = "//button[text()='Get Started']") public  WebElement getStartedButtonHP;
 	@FindBy(linkText = "Data Structures") public  WebElement dsDropDown;
@@ -22,12 +23,11 @@ public class HomePage {
 	@FindBy(xpath = "//div[@class='alert alert-primary']") public  WebElement notLoggedInAlert;
 	@FindBy(name = "username") public  WebElement userName_SignIn;
 	@FindBy(name = "password") public  WebElement passWord_SignIn;
-//	@FindBy(xpath = "//div[@class='col-sm']/br") public  WebElement pleaseRegisterMessage;
 	@FindBy(linkText = "Register!") public  WebElement pleaseRegisterMessageLink;
 	
 	public HomePage(WebDriver driver){
 
-		this.driver = driver;
+//		this.driver = driver;
         PageFactory.initElements(driver, this);
 
     }
