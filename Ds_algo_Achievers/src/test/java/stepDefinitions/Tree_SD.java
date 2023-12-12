@@ -8,17 +8,26 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pageFactory.GraphPage;
 import pageFactory.TreePage;
 import utilities.DriverFactory;
 import utilities.commonMethods;
 
 public class Tree_SD {
 	
-	WebDriver driver = DriverFactory.initializeDriver("Chrome");
-	TreePage tp = new TreePage(driver);
+	WebDriver driver;
+	TreePage tp;
+	
+	@Before
+	public void setUp(){
+		
+		this.driver = DriverFactory.initializeDriver("Chrome");
+		this.tp = new TreePage(driver);
+	}
 	
 	@Given("User is on the sign-in page")
 	public void user_is_on_the_sign_in_page() {
@@ -204,11 +213,28 @@ public class Tree_SD {
 //		commonMethods.actionsClick(tp.tryHereButton, driver);
 		
 	}
+	
+	@Then("User should be redirected to Try Editor Page")
+	public void user_should_be_redirected_to_try_editor_page() {
+		assertTrue(driver.getPageSource().contains("Run"));
+	}
+	
+	@When("User enters python code with syntax errors")
+	public void user_enters_python_code_with_syntax_errors() {
+		commonMethods.waitForElementToBeVisible(driver,tp.pythonCode_Input );
+		commonMethods.actionsSendKeys(driver,tp.pythonCode_Input,"Hello'");
+	}
+
+	@Then("User must be able to see the syntax error alert")
+	public void user_must_be_able_to_see_the_syntax_error_alert() {
+		String alertMessage = driver.switchTo().alert().getText() ;
+		System.out.println(alertMessage);
+		assertEquals(alertMessage ,"SyntaxError: bad input on line 1");
+	}
 
 	@When("User enters correct python code")
 	public void user_enters_correct_python_code() {
 		commonMethods.waitForElementToBeVisible(driver,tp.pythonCode_Input );
-//		tp.pythonCode_Input.sendKeys("print('Hello')");
 		commonMethods.actionsSendKeys(driver,tp.pythonCode_Input,"print('Hello')");
 	}
 

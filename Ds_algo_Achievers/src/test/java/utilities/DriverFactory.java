@@ -9,13 +9,19 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import Config.PropertiesFile;
+
 
 
 public class DriverFactory {
 	
 	public static WebDriver driver;
+	static String browser = PropertiesFile.readPropertiesFile("browser");
 	
 	public static WebDriver initializeDriver(String browser) {
+		
+//		  System.out.println("The browser value from properties file is: "+ browser);
+//		  browser = "Chrome";
 		
 		if (browser == "Chrome"){
 			

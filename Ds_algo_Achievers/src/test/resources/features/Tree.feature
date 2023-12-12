@@ -1,3 +1,4 @@
+@Tree
 Feature: Testing Tree Module in DS Portal.
 
   Background: User is Signed-in.
@@ -25,13 +26,11 @@ Feature: Testing Tree Module in DS Portal.
       | Applications of Binary Trees   |
       | Binary Search Trees            |
       | Implementation of BST          |
-
-  Scenario Outline: Testing Various Try Editors.
+	@TP2
+  Scenario Outline: Testing Various Try here links.
     When User clicks on <pageName> link
     And User clicks on Try here button
-    And User enters correct python code
-    And User clicks on Run button
-    Then User must be able to see the program output below the Run button
+    Then User should be redirected to Try Editor Page
 
     Examples: 
       | pageName                       |
@@ -48,6 +47,21 @@ Feature: Testing Tree Module in DS Portal.
       | Applications of Binary Trees   |
       | Binary Search Trees            |
       | Implementation of BST          |
+	@TP3
+  Scenario: Testing Try Editor page with correct syntax.
+    When User clicks on Overview of Trees link
+    And User clicks on Try here button
+    And User enters correct python code
+    And User clicks on Run button
+    Then User must be able to see the program output below the Run button
+    
+	@TP4
+  Scenario: Testing Try Editor page with wrong syntax.
+    When User clicks on Overview of Trees link
+    And User clicks on Try here button
+    And User enters python code with syntax errors
+    And User clicks on Run button
+    Then User must be able to see the syntax error alert
 
   Scenario: Testing dropdown to load Tree page
     When User clicks on Data Structures drop down

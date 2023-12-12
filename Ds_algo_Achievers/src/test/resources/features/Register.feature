@@ -1,8 +1,7 @@
+@Register
 Feature: Testing Register feature in DS Portal.
 
-  Background: User is on the register page.
-    Given User is on the Register page
-
+  @RP1
   Scenario: Register with all fields empty.
     When User clicks on Register button
     Then It should display an error - Please fill out this field

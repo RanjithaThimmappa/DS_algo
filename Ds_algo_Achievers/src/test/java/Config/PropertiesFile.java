@@ -44,9 +44,9 @@ public class PropertiesFile {
 	
 
 //	public static void main(String[] args) {
-//		String str = readPropertiesFile("browser");
+//		String str = readPropertiesFile("getStartedPageUrl");
 //		System.out.println(str);
-//		writePropertiesFile("url","pageLink");
+////		writePropertiesFile("url","pageLink");
 //
 //	}
 

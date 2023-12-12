@@ -3,8 +3,10 @@ package stepDefinitions;
 import static org.testng.Assert.*;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,18 +17,22 @@ import utilities.commonMethods;
 
 public class Register_SD {
 	
-	WebDriver driver = DriverFactory.initializeDriver("Chrome");
-	HomePage hp = new HomePage(driver);
-	RegisterPage rp = new RegisterPage(driver);
+	WebDriver driver;
+	HomePage hp;
+	RegisterPage rp;
 	
-	@Given("User is on the Register page")
-	public void user_is_on_the_register_page() {
-		driver.get("https://dsportalapp.herokuapp.com/register");
+	@Before
+	public void setUp(){
 		
+		this.driver = DriverFactory.initializeDriver("Chrome");
+		this.hp = new HomePage(driver);
+		this.rp = new RegisterPage(driver);	
+		driver.get("https://dsportalapp.herokuapp.com/register");
 	}
 
 	@When("User clicks on Register button")
 	public void user_clicks_on_register_button() {
+		driver.get("https://dsportalapp.herokuapp.com/register");
 		hp.registerButton.click();
 	}
 
