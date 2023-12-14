@@ -18,15 +18,6 @@ public class TestContext {
 	WebDriver driver;
 	HomePage hp;
 
-	public WebDriver getDriver() {
-		return driver;
-	}
-
-	public void initializePageObjects(WebDriver driver) {
-
-		this.hp = new HomePage(driver);
-	}
-
 	public void setDriver(WebDriver driver) {
 		String browser = PropertiesFile.readPropertiesFile("browser");
 
@@ -49,9 +40,18 @@ public class TestContext {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		this.driver = driver;
 	}
+	
+	public WebDriver getDriver() {
+		return driver;
+	}
 
 	public HomePage getHp() {
 		return hp;
 	}	
+	
+	public void initializePageObjects(WebDriver driver) {
+
+		this.hp = new HomePage(driver);
+	}
 
 }
