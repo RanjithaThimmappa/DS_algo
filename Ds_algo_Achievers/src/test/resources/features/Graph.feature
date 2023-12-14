@@ -2,9 +2,8 @@
 Feature: Testing Graph Module in DS Portal.
 
   Background: User is Signed-in.
-    Given User is on the sign-in page
-    When User enters username and password
-    And User clicks on Login button
+    Given User enters homepage url
+    When User signs In to the application
     And User clicks on Graph - GetStarted button
 
   @GP1
@@ -23,7 +22,7 @@ Feature: Testing Graph Module in DS Portal.
     Then User should be redirected to Try Editor Page
 
     Examples: 
-      | pageName              |
+      | pageName              | 
       | Graph                 |
       | Graph Representations |
 

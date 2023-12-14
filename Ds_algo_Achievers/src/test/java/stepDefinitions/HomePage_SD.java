@@ -1,43 +1,52 @@
 package stepDefinitions;
 
+import java.time.Duration;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import Config.PropertiesFile;
+import context.TestContext;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pageFactory.GraphPage;
 import pageFactory.HomePage;
-import utilities.DriverFactory;
+import pageFactory.RegisterPage;
+import pageFactory.TreePage;
 import utilities.commonMethods;
 import static org.testng.Assert.*;
 
-public class HomePage_SD{
+public class HomePage_SD {
 
-	WebDriver driver; 
+	TestContext testContext;
+	WebDriver driver;
 	HomePage hp;
+	
+	public HomePage_SD(TestContext testContext) { 
+		this.testContext = testContext;
+	}
 	
 	@Before
 	public void setUp(){
-		String value = PropertiesFile.readPropertiesFile("browser");		
-		this.driver = DriverFactory.initializeDriver(value);
-		this.hp = new HomePage(driver);
-//		this.driver = new ChromeDriver();
+		testContext.setDriver(driver);
+		this.driver = testContext.getDriver();
+		testContext.initializePageObjects(driver);		
+		hp = testContext.getHp();
 	}
 	
-	@When("User enters homepage url")
+	@Given("User enters homepage url")
 	public void user_enters_homepage_url() {
-		String url = PropertiesFile.readPropertiesFile("getStartedPageUrl");
+		String url = PropertiesFile.readPropertiesFile("HomePageUrl");
 		driver.get(url);
 	}
 
 	@Then("User should be able to navigate to the home page and see the text - Preparing for the Interviews You are at the right place")
 	public void user_should_be_able_to_navigate_to_the_home_page_and_see_the_text_preparing_for_the_interviews_you_are_at_the_right_place() {
 
-		String homeText = hp.getHomePageText();
+		String homeText = hp.homePageText.getText();
 		assertEquals("Preparing for the Interviews", homeText); 
 	}
 
@@ -47,8 +56,8 @@ public class HomePage_SD{
 		assertTrue(hp.getStartedButtonHP.isDisplayed());
 	}
 
-	@When("User Clicks on Get Started")
-	public void user_clicks_on_get_started() {
+	@When("User Clicks on Get Started button")
+	public void user_clicks_on_get_started_button() {
 
 		hp.getStartedButtonHP.click();
 	}
@@ -146,9 +155,9 @@ public class HomePage_SD{
 		assertTrue(hp.registerButton.isDisplayed());
 	}
 	
-	@After // This is Hook and is working fine but not sure why it's throwing SocketException with this method
+	@After 
 	public void tearDown() {	
-//		driver.close();// Using this throws socket exception.
+
 		driver.quit();
 	}
 
