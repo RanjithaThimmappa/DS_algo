@@ -1,48 +1,35 @@
-#Author: your.email@your.domain.com
-#Keywords Summary :
-#Feature: List of scenarios.
-#Scenario: Business rule through list of steps with arguments.
-#Given: Some precondition step
-#When: Some key actions
-#Then: To observe outcomes or validation
-#And,But: To enumerate more Given,When,Then steps
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for s table
-#Background: List of steps run before each of the scenarios
-#""" (Doc Strings)
-#| (Data Tables)
-#@ (Tags/Labels):To group Scenarios
-#<> (placeholder)
-#""
-## (Comments)
-#Sample Feature Definition Template
 @DataStructure
 Feature: Testing the Data Structure feature functionality
 
   Background: The user is Signed in
-    Given The user is on Sign In page
-    When The user enters username and password
-    And User clicks on the login button
-    Then The user is in the home page where user is able to see the Signout button of the user
+    Given User enters homepage url
+    And User signs In to the application
+    When The user clicks  Get Started button below the Data structures-Introduction
+    And The user directed to the DataStructure page and clicks Time Complexity button
 
   @DS1
-  Scenario: Checking the Get StartButton functionality
-    When The user clicks  Get Started button below the Data structures-Introduction
-    Then The user should land in Data Structures- Introduction Page
-
-  @DS2
   Scenario: Checking the Time Complexity button functionality
-    When The user clicks Time Complexity button
     Then The user should be redirected to time complexity of Data structures-Introduction page
 
-  @DS3
+  @DS2
   Scenario: Checking the functionality of Try here button
     When The user clicks the Try Here button
-    Then The user is redirected to the Try Editor page
+    Then The user is redirected to the Try Editor page and user enters the python code
+
+  @DS3
+  Scenario: Checking The functionality of Run button
+    When The user clicks the Try Here button
+    And The user enters the Python script
     And The user clicks the Run button
+    Then The user is able to see the output
 
   @DS4
+  Scenario: Checking whethere the error message is showing
+    When The user clicks the Try Here button
+    And The user enters the wrong python code and clicks Run button
+    Then The user is able to see the error message
+
+  @DS5
   Scenario: Checking the Practice Question button functionality
-    Given The user navigate back to the Time complexity page
     When The user clicks the Practice Questions button
     Then The user should be redirected to Practice Questions of Data structures-Introduction

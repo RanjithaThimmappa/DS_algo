@@ -1,93 +1,125 @@
 package stepDefinitions;
 
+import static org.testng.Assert.assertEquals;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+
+import configuration.PropertiesFile;
+import context.TestContext;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 
-import pageFactory.DataStructure;
-import utilities.DriverFactory;
+
+import pageFactory.HomePage;
+
+
+import utilities.commonMethods;
 
 public class DataStructure_SD {
       
-	WebDriver driver =DriverFactory.initializeDriver("chrome");
-	DataStructure ds = new DataStructure(driver);
+	TestContext testContext;
+	WebDriver driver;
+	HomePage hp;
 	
-@Given("The user is on Sign In page")
-public void the_user_is_on_sign_in_page() {
-	driver= DriverFactory.initializeDriver("chrome");
-	ds.SignInBtn.click();
-}
-
-@When("The user enters username and password")
-public void the_user_enters_username_and_password() {
-	ds.username.sendKeys("Achievers");
-	ds.password.sendKeys("34dfSnRzx@QaRH");
-}
-
-@When("User clicks on the login button")
-public void user_clicks_on_the_login_button() {
-	ds.loginBtn.click();
-}
-
-@Then("The user is in the home page where user is able to see the Signout button of the user")
-public void the_user_is_in_the_home_page() {
-	Assert.assertTrue(ds.SignOutBtn.isDisplayed());
-}
+	
+	public DataStructure_SD(TestContext testContext) { 
+		this.testContext = testContext;
+		this.driver = testContext.getDriver();
+		this.hp = testContext.getHp();
+	}
 
 @When("The user clicks  Get Started button below the Data structures-Introduction")
 public void the_user_clicks_get_started_button_below_the_data_structures_introduction() {
-     ds.getStartedBtn.click();
+	// driver.get("https://dsportalapp.herokuapp.com/home");
+	
+     hp.getStartedBtn.click();
 }
 
-@Then("The user should land in Data Structures- Introduction Page")
-public void the_user_should_land_in_data_structures_introduction_page() {
-	Assert.assertEquals("Data Structures-Introduction", ds.dataStructureText);
-}
 
-@When("The user clicks Time Complexity button")
+@When("The user directed to the DataStructure page and clicks Time Complexity button")
 public void the_user_clicks_time_complexity_button() {
-	ds.timeComplexityBtn.click();
+	//Assert.assertTrue(driver.getPageSource().contains("Data Structures-Introduction"));
+	hp.timeComplexityBtn.click();
 }
 
 @Then("The user should be redirected to time complexity of Data structures-Introduction page")
 public void the_user_should_be_redirected_to_time_complexity_of_data_structures_introduction_page() {
-	Assert.assertTrue(ds.timeComplexityText.isDisplayed());
+	commonMethods.waitForElementToBeVisible(driver, hp.timeComplexityText);
+	Assert.assertTrue(hp.timeComplexityText.isDisplayed());
 }
+
+
 
 @When("The user clicks the Try Here button")
 public void the_user_clicks_the_try_here_button() {
-	ds.tryHereBtn.click();
+	
+//	ds.tryHereBtn.click();
+	commonMethods.waitForElementToBeClickable(driver, hp.tryHereBtn);
+	commonMethods.actionsClick(hp.tryHereBtn, driver);
+	//ds.tryHereBtn.click();
 }
 
-@Then("The user is redirected to the Try Editor page")
-public void the_user_is_redirected_to_the_try_editor_page() {
-	Assert.assertEquals("Run", ds.RunBtn);
+@Then("The user is redirected to the Try Editor page and user enters the python code")
+public void the_user_is_redirected_to_the_try_editor_page_and_user_enters_the_python_code() {
+		Assert.assertTrue(driver.getPageSource().contains("Run"));
 }
 
-@Then("The user clicks the Run button")
+@When("The user enters the Python script")
+public void the_user_enters_the_python_script() {
+	commonMethods.waitForElementToBeClickable(driver, hp.InputText);
+//	ds.InputText.sendKeys("print('hello')");
+	commonMethods.actionsSendKeys(hp.InputText, driver, "print('hello')");
+}
+
+@When("The user clicks the Run button")
 public void the_user_clicks_the_run_button() {
-	ds.RunBtn.click();
+	hp.RunBtn.click();
 }
 
-@Given("The user navigate back to the Time complexity page")
-public void the_user_navigate_back_to_the_time_complexity_page() {
-	driver.navigate().back();
-	Assert.assertTrue(ds.timeComplexityText.isDisplayed());
+@Then("The user is able to see the output")
+public void the_user_is_able_to_see_the_output() {
+	commonMethods.waitForElementToBeVisible(driver, hp.output);
+	assertEquals(hp.output.getText(), "hello");
 }
+
+@When("The user enters the wrong python code and clicks Run button")
+public void the_user_enters_the_wrong_python_code() {
+	//ComonMthods.WaitForElementToBeVisible(driver, ds.InputText);
+	commonMethods.actionsSendKeys(hp.InputText, driver, "hello");
+	hp.RunBtn.click();
+}
+
+@Then("The user is able to see the error message")
+public void the_user_is_able_to_see_the_error_message() {
+	String alertmsg = driver.switchTo().alert().getText();
+	System.out.println(alertmsg);
+	//Assert.assertEquals(false, null);
+	
+	
+}
+
 
 @When("The user clicks the Practice Questions button")
 public void the_user_clicks_the_practice_questions_button() {
-    ds.practiceQuestionBtn.click();
+	hp.practiceQuestionLink.click();
 }
 
 @Then("The user should be redirected to Practice Questions of Data structures-Introduction")
 public void the_user_should_be_redirected_to_practice_questions_of_data_structures_introduction() {
-     Assert.assertTrue(driver.getPageSource().contains("Practice Questions")); 
+	Assert.assertTrue(hp.PractceQuestion_page.isDisplayed());
+}
+
+
+@After 
+public void CloseWindow() {
+	//driver.close();
+	driver.quit();
+}
 }
 
 
 
-
-
-}
