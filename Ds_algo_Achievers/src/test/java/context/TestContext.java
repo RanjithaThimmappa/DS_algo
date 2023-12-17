@@ -20,7 +20,8 @@ public class TestContext {
 
 	public void setDriver(WebDriver driver) {
 		String browser = PropertiesFile.readPropertiesFile("browser");
-
+		System.out.println("The browser value from properties file is: "+ browser);
+		
 		if (browser.equalsIgnoreCase(browser)){
 			
 			ChromeOptions co = new ChromeOptions();
@@ -53,5 +54,5 @@ public class TestContext {
 
 		this.hp = new HomePage(driver);
 	}
-
+	
 }

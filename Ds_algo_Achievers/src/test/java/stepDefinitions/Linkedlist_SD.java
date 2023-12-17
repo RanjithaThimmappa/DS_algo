@@ -5,23 +5,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import context.Testcontext;
+import context.TestContext;
 import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageFactory.HomePage;
 import pageFactory.LinkedlistPage;
-import utilities.DriverFactory;
 import utilities.commonMethods;
 
-
 public class Linkedlist_SD {
-	Testcontext testContext;
+	TestContext testContext;
 	HomePage hp;
 	WebDriver driver;
 	
-	public Linkedlist_SD(Testcontext testContext) { 
+	public Linkedlist_SD(TestContext testContext) { 
 		this.testContext = testContext;
 		this.driver = testContext.getDriver();
 		this.hp = testContext.getHp();
@@ -78,7 +76,7 @@ public class Linkedlist_SD {
 
 	@When("The user select Linkedlist from the drop down menu")
 	public void the_user_select_linkedlist_from_the_drop_down_menu() {
-		hp.dropdownMenu.click();
+		hp.dsDropDown.click();
 	}
 
 	@When("The user clicks on the Linkedlist")

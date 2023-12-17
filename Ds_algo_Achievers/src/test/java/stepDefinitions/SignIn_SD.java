@@ -11,13 +11,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-
-import Excel.Excelreader;
 import context.TestContext;
 import pageFactory.HomePage;
 import pageFactory.SignIn;
 import pageFactory.SignOut;
-import utilities.DriverFactory;
 
 public class SignIn_SD {
 	
@@ -31,14 +28,6 @@ public class SignIn_SD {
 		this.hp=testContext.getHp();
 	}
 	
-	/*
-	 * @When("User should be able to see SignIn button and click on it") public void
-	 * user_clicks_on_sign_in_button() {
-	 * Assert.assertTrue(hp.signInLink.isDisplayed()); hp.signInLink.click();
-	 * 
-	 * }
-	 */
-	
 	@When("Type Valid (.*) and (.*)$")
 	public void type_valid_achievers_and_34df_sn_rzx_qa_rh(String username,String password){
 		
@@ -46,11 +35,6 @@ public class SignIn_SD {
 		hp.passWord_SignIn.sendKeys(password);
 	}
 
-	/*
-	 * @When("Clicks on Login link") public void clicks_on_login_link() {
-	 * hp.login.click(); }
-	 */
-	
 	@Then("You are logged in message should be displayed")
 	public void you_are_logged_in_message_should_be_displayed() {
 	//	Assert.assertTrue(si.signInText.isDisplayed());
@@ -59,7 +43,6 @@ public class SignIn_SD {
 		System.out.println(SigninText);
 		Assert.assertEquals("You are logged in", SigninText);
 	}
-	
 
 	@When("The User enters (.*) and (.*)$")
 	public void the_user_enters_achievers1_and_34df_sn_rzx_qa_rh1(String username,String password) {
@@ -101,13 +84,6 @@ public class SignIn_SD {
 	public void please_fill_out_this_field_message_should_be_displayed_for_password_field() {
 		
 		hp.WarningMessage();
-	}
-	@After
-	public void closeDriver() throws InterruptedException
-	{
-		Thread.sleep(0);
-		driver.quit();
-		
 	}
 
 }

@@ -19,7 +19,7 @@ import pageFactory.TreePage;
 import utilities.commonMethods;
 import static org.testng.Assert.*;
 
-public class HomePage_SD {
+public class HomePage_SD{
 
 	TestContext testContext;
 	WebDriver driver;
@@ -30,7 +30,7 @@ public class HomePage_SD {
 	}
 	
 	@Before
-	public void setUp(){
+	public void setUp1(){
 		testContext.setDriver(driver);
 		this.driver = testContext.getDriver();
 		testContext.initializePageObjects(driver);		

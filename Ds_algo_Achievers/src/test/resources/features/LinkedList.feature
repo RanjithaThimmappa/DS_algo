@@ -6,7 +6,7 @@ Feature: User validating the various features of Linkedlist modules
     When User signs In to the application
     And User Clicks on the Get Started button for Linkedlist Page
 
-  @tag2
+  @LL2
   Scenario Outline: Checking the Linkedlist Links
     When The User clicks on "<name>" link for Linkedlist Page
     And User clicks on Try here button

@@ -1,8 +1,6 @@
 @tag
 Feature: User Navigation to Array page
   
-  
-
   Background: User is Signed-in.
     Given User enters homepage url
     When User signs In to the application

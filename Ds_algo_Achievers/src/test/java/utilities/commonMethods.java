@@ -51,8 +51,6 @@ public class commonMethods {
 		
 	}
 
-
-
 	public static String getActiveElementAttribute(WebDriver driver) {
 		WebElement activeElement = driver.switchTo().activeElement();
 		String message = activeElement.getAttribute("validationMessage");

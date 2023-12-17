@@ -3,13 +3,18 @@ package pageFactory;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,6 +22,7 @@ import utilities.commonMethods;
 
 public class HomePage {
 	
+	WebDriver driver;
 //	Home page elements:
 	@FindBy(xpath = "//h1[text()='Preparing for the Interviews']") public  WebElement homePageText;
 	@FindBy(xpath = "//button[text()='Get Started']") public  WebElement getStartedButtonHP;
@@ -39,6 +45,70 @@ public class HomePage {
 	@FindBy(xpath = "//div[@class='alert alert-primary']") public WebElement errorMessage_Register;
 	@FindBy(xpath = "//div[@class='alert alert-primary']") public WebElement success_Register;
 
+//  Sign-in Page elements:
+	@FindBy(xpath = "//button[text()='Get Started']") public  WebElement getStartedButton;
+	@FindBy(xpath = "//a[text()='Sign in']") public  WebElement signIn;
+	@FindBy(xpath = "//div[@class='alert alert-primary']") public  WebElement signInText;
+	@FindBy(xpath = "//div[@class='alert alert-primary']") public  WebElement inValidText;
+	
+//  Sign-out page element:
+	@FindBy(xpath = "//input[@value='Login']")public WebElement login;
+	@FindBy(xpath = "//a[text()='Sign out']")public WebElement signOutLink;
+	@FindBy(xpath = "/html/body/div[2]")public WebElement loggedOutText;
+
+// DataStructures page elements:
+	@FindBy(xpath="//a[@href=\"data-structures-introduction\"]") public WebElement getStartedBtn;
+	@FindBy(xpath="//h4[text()='Data Structures-Introduction']") public WebElement dataStructureText;
+	@FindBy(xpath="//a[@href='time-complexity']")public WebElement timeComplexityBtn;
+	@FindBy(xpath="//p[text()='Time Complexity']") public WebElement timeComplexityText;
+	@FindBy(xpath="//a[text()='Try here>>>']") public WebElement tryHereBtn;
+	@FindBy(xpath="//form[@id='answer_form']") public WebElement InputText;
+	@FindBy(xpath="//button[@type='button']")public WebElement RunBtn;
+//	@FindBy(xpath="//*[@id='output']") public WebElement output;
+	@FindBy(xpath="//a[@href='/data-structures-introduction/practice']") public WebElement practiceQuestionLink;
+	@FindBy(xpath="/html/body")public WebElement PractceQuestion_page;
+	
+//  Queue page elements:
+	@FindBy(xpath="//a[@href='/login']")       public WebElement SignInBtn;
+	@FindBy(xpath="//input[@name='username']") public WebElement userName;
+	@FindBy(xpath="//input[@name='password']") public WebElement passWord;
+	@FindBy(xpath="//input[@value='Login']")   public WebElement loginBtn;
+	@FindBy(xpath="//a[@href='/logout']")      public WebElement SignOutBtn;
+	@FindBy(xpath="//a[@href='queue']") public WebElement GetStartedBtn;
+	@FindBy(xpath="//h4[text()='Queue']")public WebElement QueueText;
+	@FindBy(xpath="//a[@href='implementation-lists']")public WebElement ImplemntatnOfQueInPythn_Link;
+	@FindBy(xpath="//p[text()='Implementation of Queue in Python']")public WebElement ImplemntatnOfQueInPythn_Text;
+	@FindBy(xpath="//a[@href='implementation-collections']")public WebElement ImplemntatnCollectn_Link;
+	@FindBy(xpath="//p[text()='Implementation using collections.deque']") public WebElement ImplemntatnCollectn_Text;
+	@FindBy(xpath="//a[@href='/queue/implementation-collections/']")public WebElement ImplementationColectn_Deque;
+	@FindBy(xpath="//a[@href='Implementation-array']")public WebElement ImplemnatatnUsingArray_Link;
+	@FindBy(xpath="//p[text()='Implementation using array']")public WebElement ImplemnatatnUsingArray_Text;
+	@FindBy(xpath="//a[@href='/queue/Implementation-array/']")public WebElement Implemenetaion_Using_ArrayLink2;
+	@FindBy(xpath="//a[@href='QueueOp']") public WebElement QueueOperatn_Link;
+	@FindBy(xpath="//p[text()='Queue Operations']") public WebElement QueueOperatn_Text;
+	@FindBy(xpath="//a[@href='/queue/QueueOp/']") public WebElement QueueOperatn_Link2;
+	@FindBy(xpath="//a[@href='/tryEditor']")public WebElement TryHereBtn;
+	@FindBy(xpath="//*[@id='answer_form']") public WebElement Input_PythonCode;
+	@FindBy(xpath="//button[text()='Run']")public WebElement runbtn;
+	@FindBy(xpath="//*[@id='output']")public WebElement PythonCode_Output;
+	@FindBy(xpath="//a[@href='/queue/practice']") public WebElement practiceQuestion_Link;
+	@FindBy(xpath="/html/body") public WebElement practiceQuestion_page;
+	
+//  Stack page elements:
+	@FindBy(css="h5.card-title")List<WebElement> datastructures;
+	@FindBy(xpath="//h4[text()='Stack']")public WebElement stackpage;
+	@FindBy(xpath="//a[text()='Operations in Stack']")public WebElement Operations_in_Stack;
+	@FindBy(xpath="//a[text()='Implementation']")public WebElement Implementation;
+	@FindBy(xpath="//a[text()='Applications']")public WebElement Applications;
+	@FindBy(xpath="//a[text()='Try here>>>']")public WebElement tryHere;
+	@FindBy(xpath = "//*[@id='answer_form']") public  WebElement pythonCode;
+	@FindBy(xpath = "//button[text()='Run']") public  WebElement Run;
+	@FindBy(id = "output") public  WebElement Output;
+	@FindBy(xpath = "//body") public  WebElement practiceQn;
+	@FindBy(linkText = "Data Structures") public  WebElement DropDown;
+	@FindBy(linkText = "Stack") public  WebElement stack_DropDown;
+	@FindBy(xpath = "//h4[text()='Stack']") public  WebElement stack_Text;
+	
 //  Tree page elements:
 	@FindBy(name = "username") public WebElement username;
 	@FindBy(name = "password") public WebElement password;
@@ -88,10 +158,94 @@ public class HomePage {
 	@FindBy(xpath = "//a[@class='dropdown-item' and text()='Graph']") public WebElement graphOption_DSDropdown;
 	@FindBy(xpath = "//h4[text()='Graph']") public WebElement graphPage_Text;
 	
+//  Array Page elements:	
+	@FindBy(xpath = "//h4[text() = 'Array']") public WebElement arrayPage;
+	@FindBy(xpath = "//a[@href='arrays-in-python']") public  WebElement arrayinpythonLink;
+	@FindBy(xpath = "//a[text()='Arrays Using List']") public  WebElement arrayusinglistLink;
+	@FindBy(xpath = "//a[text()='Basic Operations in Lists']") public  WebElement basicoperationsinlistsLink;
+	@FindBy(xpath = "//a[text()='Applications of Array']") public  WebElement applicationofarraysLink;
+	@FindBy(xpath =  "//a[text()='Search the array']")    public WebElement PracticequestionPage;
+	@FindBy(xpath = "//h5[text()='Array']/../a[text() = 'Get Started']") public  WebElement getStartedButton_ArrayModule;
+	@FindBy(xpath = "//a[@class='dropdown-item' and text()='Arrays']") public WebElement arrayDropDownElement;
+	
+// Linked-List Page elements:
+	@FindBy(name="username") public WebElement Username;
+	@FindBy(name="password") public WebElement Password;
+	@FindBy(xpath = "//a[@href='linked-list']") public  WebElement getStartedButton_LinkedlistModule;
+	@FindBy(xpath="//a[@href='introduction']")public WebElement Introduction_link;
+	@FindBy(xpath="//a[@href='creating-linked-list']") public WebElement creatingLinkedList_link;
+	@FindBy(xpath="//a[text()='Types of Linked List']") public WebElement Typesoflinkedlist_link;
+	@FindBy(xpath="//a[@href='implement-linked-list-in-python']") public WebElement implementLinkedlistInPython_link;
+	@FindBy(xpath="//a[@href='traversal']") public WebElement traversal_link;
+	@FindBy(xpath="//a[@href='insertion-in-linked-list']") public WebElement insertionInLinkedlist_link;
+	@FindBy(xpath="//a[@href='deletion-in-linked-list']") public WebElement deletionInLinkedlist_link;
+	@FindBy(xpath = "//a[@href='/tryEditor']") public  WebElement tryhereBtn;
+	@FindBy(xpath = "//a[text()='Practice Questions']") public  WebElement practicequestionLink;
+	@FindBy(xpath = "//div[@class ='input']") public  WebElement codeEditorPage;
+	@FindBy(xpath = "//button[@type='button' and @onclick='runit()' and text()='Run']") public  WebElement runBtn;
+	@FindBy(id="output") public WebElement output; 
+	@FindBy(xpath="//a[text()='Data Structures']") public WebElement dropdown;
+	@FindBy(xpath="//a[@class='dropdown-item' and  text()='Linked List']") public WebElement Linkedlist;
+	@FindBy(xpath="//h4[text()='Linked List']") public WebElement LinkedListPage;
+	@FindBy(xpath="//a[text()='Practice Questions']") public WebElement LLPracticeQuestionLink;
+	
 	public HomePage(WebDriver driver){
-
+		this.driver = driver;
         PageFactory.initElements(driver, this);
 
     }
+	
+	public void WarningMessage()
+	{
+		WebElement activeElement = driver.switchTo().activeElement();
+		String messageStr = activeElement.getAttribute("validationMessage");
+		System.out.println("Actual message appeared on screen: " + messageStr);
+	}
+	
+	public boolean verifySignoutText()
+	{
+		try {
+		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(2));
+		wait.until(ExpectedConditions.visibilityOf(signOutLink));
+			return true;
+		}catch(Exception e)
+		{
+			return false;
+		}
+	
+	}
+	
+	public  void verifyGetStartedButton() throws InterruptedException
+	{
+		for(int i=0;i<datastructures.size();i++)
+		{
+			String dsname=datastructures.get(i).getText();
+			driver.findElements(By.xpath("//a[text()='Get Started']")).get(i).click();
+			Thread.sleep(1000);
+			System.out.println("The " +dsname+" cannot be opened because "+loggedOutText.getText());
+		
+		}
+	}
+	
+	public  void ClickonGetStartedButton() throws InterruptedException
+	{
+		for(int i=0;i<datastructures.size();i++)
+		{
+			String dsname=datastructures.get(i).getText();
+			if(dsname.contains("Stack"))
+			{
+			driver.findElements(By.xpath("//a[text()='Get Started']")).get(i).click();
+			break;
+			}
+		
+		}
+	}
+	
+	public void clearText()
+	{
+		Actions actions=new Actions(driver);
+		actions.click(pythonCode).keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(Keys.BACK_SPACE)
+		.build().perform();
+	}
 	
 }
