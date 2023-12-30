@@ -1,11 +1,12 @@
-@Tree
+@DSALGO
 Feature: Testing Tree Module in DS Portal.
 
   Background: User is Signed-in.
     Given User enters homepage url
     When User signs In to the application
     And User clicks on Tree page - GetStarted button
-
+    
+ @TP1
   Scenario Outline: Testing Various links.
     When User clicks on <pageName> link
     Then The user should be directed to the <pageName> page
@@ -64,11 +65,13 @@ Feature: Testing Tree Module in DS Portal.
     And User clicks on Run button
     Then User must be able to see the syntax error alert
 
+  @Tp5
   Scenario: Testing dropdown to load Tree page
     When User clicks on Data Structures drop down
     And User clicks on Tree option
     Then User should be redirected to Tree page
 
+  @Tp6
   Scenario: Testing Practice Questions link
     When User clicks on Overview of Trees link
     And User clicks on Practice Questions Link

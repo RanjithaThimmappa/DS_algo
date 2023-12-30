@@ -21,25 +21,26 @@ public class SignIn_SD {
 	TestContext testContext;
 	WebDriver driver;
 	HomePage hp;
+	SignIn sip;
 	
 	public SignIn_SD(TestContext testContext) { 
 		this.testContext = testContext;
 		this.driver=testContext.getDriver();
 		this.hp=testContext.getHp();
+		this.sip=testContext.getSip();
 	}
 	
 	@When("Type Valid (.*) and (.*)$")
 	public void type_valid_achievers_and_34df_sn_rzx_qa_rh(String username,String password){
 		
-		hp.userName_SignIn.sendKeys(username);
-		hp.passWord_SignIn.sendKeys(password);
+		hp.username.sendKeys(username);
+		hp.password.sendKeys(password);
 	}
 
 	@Then("You are logged in message should be displayed")
 	public void you_are_logged_in_message_should_be_displayed() {
-	//	Assert.assertTrue(si.signInText.isDisplayed());
 		
-		String SigninText = hp.signInText.getText();
+		String SigninText = sip.signInText.getText();
 		System.out.println(SigninText);
 		Assert.assertEquals("You are logged in", SigninText);
 	}
@@ -54,7 +55,7 @@ public class SignIn_SD {
 	public void it_should_display_a_alert_message_invalid_username_and_password(String alert) {
 		// Write code here that turns the phrase above into concrete actions
 		
-		String InValidText = hp.inValidText.getText();
+		String InValidText = sip.inValidText.getText();
 		System.out.println(InValidText);
 		Assert.assertEquals("Invalid Username and Password", alert);
 		
@@ -76,14 +77,14 @@ public class SignIn_SD {
 
 	@Then("Please fill out this field message should be displayed for username field")
 	public void please_fill_out_this_field_message_should_be_displayed_for_username_field() {
-		hp.WarningMessage();
+		sip.WarningMessage();
 	}
 
 
 	@Then("Please fill out this field message should be displayed for password field")
 	public void please_fill_out_this_field_message_should_be_displayed_for_password_field() {
 		
-		hp.WarningMessage();
+		sip.WarningMessage();
 	}
 
 }

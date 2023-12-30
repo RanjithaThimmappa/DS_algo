@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DataStructuresPage {
+	public class DataStructuresPage {
 
 		@FindBy(xpath="//input[@name='username']") public WebElement username;
 		@FindBy(xpath="//input[@name='password']") public WebElement password;		
@@ -20,10 +20,10 @@ public class DataStructuresPage {
 		@FindBy(xpath="//a[@href='/data-structures-introduction/practice']") public WebElement practiceQuestionLink;
 		@FindBy(xpath="/html/body")public WebElement PractceQuestion_page;
 		
-		public DataStructuresPage(WebDriver driver){
+	public DataStructuresPage(WebDriver driver){
 			
-	        PageFactory.initElements(driver, this);
+	      PageFactory.initElements(driver, this);
 
-	    }
+	}
 
 }

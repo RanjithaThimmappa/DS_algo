@@ -1,13 +1,15 @@
-@SignOut
+@DSALGO
 Feature: Testing the Sign Out functionality of Ds Algo application
 
   Background: 
     Given User enters homepage url
     When User Clicks on Get Started button
 
+	@Sop1
   Scenario: To validate Signout link when user is not logged in
     Then User is not able to see Signout Link Text
 
+	@Sop2
   Scenario Outline: To validate Signout link when user is logged in
     And User clicks on the Sign in link
     And Enters <Username> and <Password>
@@ -19,5 +21,6 @@ Feature: Testing the Sign Out functionality of Ds Algo application
       | Username  | Password       |
       | Achievers | 34dfSnRzx@QaRH |
 
+	@Sop3
   Scenario: To validate Get Started button when user is not logged in
     Then clicks on Get Started button from any of the datastaructures then You are not logged in text should be displayed

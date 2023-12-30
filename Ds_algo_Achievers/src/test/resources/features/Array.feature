@@ -1,4 +1,4 @@
-@tag
+@DSALGO
 Feature: User Navigation to Array page
   
   Background: User is Signed-in.
@@ -6,7 +6,7 @@ Feature: User Navigation to Array page
     When User signs In to the application
     And Click on the Get Started button for Array  Datastructures
 
-  @tag2
+  @AP1
   Scenario Outline: Checking the Topics Covered
     When The User clicks on "<name>" link
     And User clicks on Try here button
@@ -21,12 +21,12 @@ Feature: User Navigation to Array page
       | Basic Operations in Lists |
       | Applications of Array     |
 
-  @tag3
+  @AP2
   Scenario: User select Arrays from the drop down menu to load Array Page
     When The user select Arrays from the drop down menu
     Then The user should be navigated to the Array Page
 
-  @tag4
+  @AP3
   Scenario Outline: Testing Practice Questions link
     When User clicks on "<name>"  link
     And User clicks on Practice Questions Link

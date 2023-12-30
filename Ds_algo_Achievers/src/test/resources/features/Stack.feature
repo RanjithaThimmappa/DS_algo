@@ -1,11 +1,12 @@
-@Stack
+@DSALGO
 Feature: Testing Stack datastructue functionality of Ds Algo application
 
   Background: 
     Given User enters homepage url
     When User signs In to the application
     And User Clicks on Get Started button of Stack datastructure
- @ST2
+    
+ @ST1
   Scenario Outline: to validate three links present in the stack page
     Then User lands on Stack page and user should be able to see three <links> under topics covered
 
@@ -15,6 +16,7 @@ Feature: Testing Stack datastructue functionality of Ds Algo application
       | Implementation      |
       | Applications        |
 
+	@ST2
   Scenario Outline: to validate Operations in stack link in the stack page by entering valid code
     And user clicks on "<Link>" in stack link
     And User clicks on Try here button
@@ -28,6 +30,7 @@ Feature: Testing Stack datastructue functionality of Ds Algo application
       | Implementation      |
       | Applications        |
 
+	@ST3
   Scenario Outline: to validate Operations in stack link in the stack page by entering invalid code
     And user clicks on "<Link>" in stack link
     And User clicks on Try here button
@@ -41,6 +44,7 @@ Feature: Testing Stack datastructue functionality of Ds Algo application
       | Implementation      |
       | Applications        |
 
+	@ST4
   Scenario Outline: to validate Practice questions in the stack page
     And user clicks on "<Link>" in stack link
     And User clicks on Practice Questions Link
@@ -50,7 +54,7 @@ Feature: Testing Stack datastructue functionality of Ds Algo application
       | Link                |
       | Operations in Stack |
 
-  @stack3
+  @ST5
   Scenario Outline: Testing other topics
     And user clicks on "<Link>" in stack link
     And User clicks on Applications option
@@ -63,6 +67,7 @@ Feature: Testing Stack datastructue functionality of Ds Algo application
       | Link         |
       | Applications |
 
+	@ST6
   Scenario: Testing dropdown to select Stack page
     When User clicks on Data Structures drop down
     And User clicks on Stack option

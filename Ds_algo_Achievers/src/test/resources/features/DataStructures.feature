@@ -1,4 +1,4 @@
-@DataStructure
+@DSALGO
 Feature: Testing the Data Structure feature functionality
 
   Background: The user is Signed in

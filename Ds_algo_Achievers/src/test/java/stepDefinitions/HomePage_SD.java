@@ -1,21 +1,16 @@
 package stepDefinitions;
 
-import java.time.Duration;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
 import Config.PropertiesFile;
 import context.TestContext;
+import hooks.MyHooks;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageFactory.GraphPage;
 import pageFactory.HomePage;
-import pageFactory.RegisterPage;
-import pageFactory.TreePage;
 import utilities.commonMethods;
 import static org.testng.Assert.*;
 
@@ -27,14 +22,8 @@ public class HomePage_SD{
 	
 	public HomePage_SD(TestContext testContext) { 
 		this.testContext = testContext;
-	}
-	
-	@Before
-	public void setUp1(){
-		testContext.setDriver(driver);
 		this.driver = testContext.getDriver();
-		testContext.initializePageObjects(driver);		
-		hp = testContext.getHp();
+		this.hp = testContext.getHp();
 	}
 	
 	@Given("User enters homepage url")
@@ -128,7 +117,7 @@ public class HomePage_SD{
 	@Then("User gets redirected to the Sign in page and see the username field and password field")
 	public void user_gets_redirected_to_the_sign_in_page_and_see_the_username_field_and_password_field() {
 
-		if(hp.userName_SignIn.isDisplayed()&& hp.passWord_SignIn.isDisplayed()) {
+		if(hp.username.isDisplayed()&& hp.password.isDisplayed()) {
 			assertTrue(true);
 		}
 		else {
@@ -153,12 +142,6 @@ public class HomePage_SD{
 	public void user_is_redirected_on_the_register_page_and_should_be_able_to_see_the_register_button() {
 
 		assertTrue(hp.registerButton.isDisplayed());
-	}
-	
-	@After 
-	public void tearDown() {	
-
-		driver.quit();
 	}
 
 }

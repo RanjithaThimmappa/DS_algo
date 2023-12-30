@@ -15,38 +15,16 @@ public class SignOut {
 	
 	WebDriver driver;	
 	
+	@FindBy(xpath = "//input[@value='Login']")public WebElement login;
+	@FindBy(xpath = "//a[text()='Sign out']")public WebElement signOutLink;
+	@FindBy(xpath = "/html/body/div[2]")public WebElement loggedOutText;
+	@FindBy(css="h5.card-title") List<WebElement> datastructures;
+	
 	public SignOut(WebDriver driver){
 
 		this.driver = driver;
         PageFactory.initElements(driver, this);
 	}
-	
-	@FindBy(xpath = "//button[text()='Get Started']") 
-	public WebElement getStartedButton;
-	
-	@FindBy(xpath = "//a[text()='Sign in']") 
-	public WebElement signInLink;
-	
-	@FindBy(id = "id_username") 
-	public WebElement username;
-	
-	@FindBy(id = "id_password") 
-	public WebElement password;
-	
-	@FindBy(xpath = "//input[@value='Login']")
-	public WebElement login;
-	
-	@FindBy(xpath = "//a[text()='Sign out']")
-	public WebElement signOutLink;
-	
-	@FindBy(xpath = "/html/body/div[2]")
-	public WebElement loggedOutText;
-	
-	@FindBy(css="h5.card-title")
-	List<WebElement> datastructures;
-	
-	@FindBy(xpath = "//div[@class='alert alert-primary']") 
-	public  WebElement notLoggedInAlert;
 	
 	public boolean verifySignoutText()
 	{

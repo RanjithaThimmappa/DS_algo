@@ -1,4 +1,4 @@
-@tag
+@DSALGO
 Feature: Queue Feature
 
   Background: The user is Signed in

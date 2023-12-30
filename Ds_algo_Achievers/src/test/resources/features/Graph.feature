@@ -1,4 +1,4 @@
-@Graph
+@DSALGO
 Feature: Testing Graph Module in DS Portal.
 
   Background: User is Signed-in.
@@ -15,7 +15,8 @@ Feature: Testing Graph Module in DS Portal.
       | pageName              |
       | Graph                 |
       | Graph Representations |
-
+	
+	@GP2
   Scenario Outline: Testing Various Try here links.
     When User clicks on <pageName> link
     And User clicks on Try here button
@@ -26,6 +27,7 @@ Feature: Testing Graph Module in DS Portal.
       | Graph                 |
       | Graph Representations |
 
+	@GP3
   Scenario: Testing Try Editor page with correct syntax.
     When User clicks on Graph link
     And User clicks on Try here button
@@ -33,6 +35,7 @@ Feature: Testing Graph Module in DS Portal.
     And User clicks on Run button
     Then User must be able to see the program output below the Run button
 
+	@GP4
   Scenario: Testing Try Editor page with wrong syntax.
     When User clicks on Graph link
     And User clicks on Try here button
@@ -40,11 +43,13 @@ Feature: Testing Graph Module in DS Portal.
     And User clicks on Run button
     Then User must be able to see the syntax error alert
 
+	@GP5
   Scenario: Testing dropdown to load Graph page
     When User clicks on Data Structures drop down
     And User clicks on Graph option
     Then User should be redirected to Graph page
 
+	@GP6
   Scenario: Testing Practice Questions link
     When User clicks on Graph link
     And User clicks on Practice Questions Link

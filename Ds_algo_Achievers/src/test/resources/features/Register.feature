@@ -1,4 +1,4 @@
-@Register
+@DSALGO
 Feature: Testing Register feature in DS Portal.
 
   Background: User is on the homepage
@@ -10,17 +10,20 @@ Feature: Testing Register feature in DS Portal.
   Scenario: Register with all fields empty.
     When User clicks on Register button
     Then It should display an error - Please fill out this field
+    
 	@RP2
   Scenario: Register with Password and Password Confirmation fields empty.
     When User enters Username leaving other fields empty
     And User clicks on Register button
     Then It should display an error - Please fill out this field
 
+	@RP3
   Scenario: Register with Password Confirmation field empty.
     When User enters Username, Password leaving other fields empty
     And User clicks on Register button
     Then It should display an error - Please fill out this field
 
+	@RP4
   Scenario Outline: Register with different input combinations.
     When The user enters <username> , <password> , <confirm-password>
     And User clicks on Register button
