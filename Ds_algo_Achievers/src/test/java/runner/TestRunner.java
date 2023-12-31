@@ -10,14 +10,15 @@ import io.cucumber.junit.Cucumber;
 
 	@CucumberOptions(
 			monochrome = false,  //console output formatting
-			tags = "@HomePage", //tags from feature file
+			tags = "@Register", //tags from feature file
 			features = {"src/test/resources/features"}, //location of feature files
 			glue= {"stepDefinitions","hooks"}, //location of step definition files
 			plugin = {"pretty", //For the Detailed output and generating reports.
 						"html:target/MyReports/dsAlgo.html" , 
 						"json:target/MyReports/dsAlgo.json" , 
 						"junit:target/MyReports/dsAlgo.xml",
-						"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"} 
+						"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+						"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"} 
 			) 
 
 

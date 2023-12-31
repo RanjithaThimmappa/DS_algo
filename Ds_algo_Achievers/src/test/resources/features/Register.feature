@@ -1,4 +1,4 @@
-@DSALGO
+@DSALGO @Register
 Feature: Testing Register feature in DS Portal.
 
   Background: User is on the homepage
