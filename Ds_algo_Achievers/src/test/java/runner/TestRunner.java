@@ -10,7 +10,7 @@ import io.cucumber.junit.Cucumber;
 
 	@CucumberOptions(
 			monochrome = false,  //console output formatting
-			tags = "@SignIn", //tags from feature file
+			tags = "@HomePage", //tags from feature file
 			features = {"src/test/resources/features"}, //location of feature files
 			glue= {"stepDefinitions","hooks"}, //location of step definition files
 			plugin = {"pretty", //For the Detailed output and generating reports.
