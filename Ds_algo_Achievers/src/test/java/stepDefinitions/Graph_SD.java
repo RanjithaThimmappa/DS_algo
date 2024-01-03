@@ -11,7 +11,7 @@ import pageFactory.GraphPage;
 import utilities.commonMethods;
 
 public class Graph_SD {
-	
+	 
 	TestContext testContext;
 	WebDriver driver;
 	GraphPage gp;

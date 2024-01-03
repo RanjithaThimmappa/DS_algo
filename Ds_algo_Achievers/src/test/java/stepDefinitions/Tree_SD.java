@@ -30,7 +30,7 @@ public class Tree_SD {
 		tp.password.sendKeys(PropertiesFile.readPropertiesFile("password"));
 		tp.loginButton.click();
 	}
-
+ 
 	@When("User clicks on Tree page - GetStarted button")
 	public void user_clicks_on_tree_page_get_started_button() {
 		tp.tree_getStarted.click();

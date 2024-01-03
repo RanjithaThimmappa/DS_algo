@@ -1,4 +1,4 @@
-@DSALGO
+@DSALGO @SignIn
 Feature: Testing the Sign In functionality of Ds Algo application
 
   Background: 

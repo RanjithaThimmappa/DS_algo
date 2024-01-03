@@ -34,22 +34,25 @@ public class MyHooks {
 	@After 
 	public void tearDown(Scenario scenario) {
 		
-		//To take a screenshot if there is any failed scenario. 
+//		To take a screenshot if there is any failed scenario. 
 		if(scenario.isFailed()) {
 			final byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-			Allure.addAttachment("Failed Screenshot", new ByteArrayInputStream(screenshot));
-			scenario.attach(screenshot, "image/png", "image");
+			Allure.addAttachment("Failed Screenshot", new ByteArrayInputStream(screenshot));//Allure report screenshot
+			scenario.attach(screenshot, "image/png", "image");//Extent report screenshot
 		}
 		
 		driver.quit();
 	}
 
-//	// To take a screenshot after every single step.
+	// To take a screenshot after every single step.
 //	@AfterStep 
 //	public static void takeScreenshot(Scenario scenario) {
 //		
-//		final byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-//		scenario.attach(screenshot, "image/png", "image");
-//	}
+//		if(scenario.isFailed()) {
+//			final byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+//			Allure.addAttachment("Failed Screenshot", new ByteArrayInputStream(screenshot));//Allure report screenshot
+//			scenario.attach(screenshot, "image/png", "image");//Extent report screenshot
+//		}
+	}
 
-}
+

@@ -5,7 +5,7 @@ Feature: Testing Graph Module in DS Portal.
     Given User enters homepage url
     When User signs In to the application
     And User clicks on Graph - GetStarted button
-
+ 
   @GP1
   Scenario Outline: Testing Various links.
     When User clicks on <pageName> link
