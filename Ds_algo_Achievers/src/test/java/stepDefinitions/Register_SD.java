@@ -132,7 +132,7 @@ public class Register_SD{
 	public void it_should_display_a_message_new_account_created_you_are_logged_in_as_username() {
 		String success = rp.success_Register.getText();
 		System.out.println(success);
-		assertNotEquals(success, "New Account Created. You are logged in as JyothsnaV2");
+		assertEquals(success, "New Account Created. You are logged in as JyothsnaV2");
 		
 	}
 	
