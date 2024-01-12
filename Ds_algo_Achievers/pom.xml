@@ -1,8 +1,22 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  
   <groupId>Ds_algo_Achievers</groupId>
   <artifactId>Ds_algo_Achievers</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <selenium.version>4.16.1</selenium.version>
+        <cucumber.version>7.15.0</cucumber.version>
+        <testng.version>7.9.0</testng.version>
+        <maven.compiler.plugin.version>3.12.1</maven.compiler.plugin.version>
+        <maven.surefire.plugin.version>3.2.3</maven.surefire.plugin.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+    </properties>
   
   <dependencies>
 	  
@@ -10,30 +24,39 @@
    <dependency>
      <groupId>org.seleniumhq.selenium</groupId>
      <artifactId>selenium-java</artifactId>
-     <version>4.16.1</version>
+     <version>${selenium.version}</version>
    </dependency>
    
    <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 	<dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
-      <version>7.14.1</version>
+      <version>${cucumber.version}</version>
 	</dependency>
 	
 	<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
 	<dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-testng</artifactId>
-      <version>7.14.1</version>
+      <version>${cucumber.version}</version>
 	</dependency>
 	
     <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit</artifactId>
-      <version>7.14.1</version>
+      <version>${cucumber.version}</version>
       <scope>test</scope>
 	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
+   <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-picocontainer</artifactId>
+      <version>${cucumber.version}</version>
+	</dependency>
+	
+	
 	
 	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
 	<dependency>
@@ -55,13 +78,6 @@
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
       <version>2.20.0</version>
-	</dependency>
-	
-   <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
-   <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-picocontainer</artifactId>
-      <version>7.15.0</version>
 	</dependency>
 	
 	<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
@@ -91,8 +107,35 @@
     	<artifactId>allure-testng</artifactId>
     	<version>2.25.0</version>
 	</dependency>
-		
+
   </dependencies>
   
+  <build>
+	  <plugins>
+		  
+		  <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+          </plugin>
+		  
+		  <plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-surefire-plugin</artifactId>
+			  <version>${maven.surefire.plugin.version}</version>
+			  	<configuration>
+					<includes>**/TestRunner.java</includes>
+        			<parallel>classes</parallel>
+       				<threadCount>4</threadCount>
+       				
+    			</configuration>
+		  </plugin>
+                        
+        </plugins>
+    </build>
   
 </project>
