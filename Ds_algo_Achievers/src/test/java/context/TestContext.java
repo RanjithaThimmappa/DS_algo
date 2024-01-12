@@ -15,6 +15,7 @@ import pageFactory.*;
 
 public class TestContext {
 
+	protected static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
 	WebDriver driver;
 	
 	HomePage hp;
@@ -40,6 +41,7 @@ public class TestContext {
 			co.addArguments("--headless");
 			co.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 			driver = new ChromeDriver(co);
+			threadLocalDriver.set(driver);
 		}
 
 		else if(browser.equalsIgnoreCase("Edge")){
@@ -48,6 +50,7 @@ public class TestContext {
 			
 			eo.addArguments("--headless");
 			driver = new EdgeDriver(eo);
+			threadLocalDriver.set(driver);
 		}
 
 		else if(browser.equalsIgnoreCase("FireFox")) {
@@ -57,6 +60,7 @@ public class TestContext {
 			
 			fo.addArguments("--headless");
 			driver = new FirefoxDriver(fo);
+			threadLocalDriver.set(driver);
 		}
 
 		driver.manage().window().maximize();
@@ -65,7 +69,7 @@ public class TestContext {
 	}
 	
 	public WebDriver getDriver() {
-		return driver;
+		return threadLocalDriver.get();
 	}
 
 	public HomePage getHp() {
