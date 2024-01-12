@@ -8,11 +8,9 @@ import org.openqa.selenium.WebDriver;
 
 import context.TestContext;
 import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.qameta.allure.Allure;
-import pageFactory.HomePage;
 
 public class MyHooks {
 
@@ -41,18 +39,9 @@ public class MyHooks {
 			scenario.attach(screenshot, "image/png", "image");//Extent report screenshot
 		}
 		
-		driver.quit();
+		testContext.getDriver().quit();
 	}
 
-	// To take a screenshot after every single step.
-//	@AfterStep 
-//	public static void takeScreenshot(Scenario scenario) {
-//		
-//		if(scenario.isFailed()) {
-//			final byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-//			Allure.addAttachment("Failed Screenshot", new ByteArrayInputStream(screenshot));//Allure report screenshot
-//			scenario.attach(screenshot, "image/png", "image");//Extent report screenshot
-//		}
-	}
+}
 
 
